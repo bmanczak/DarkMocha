@@ -1,0 +1,17 @@
+Our team needs a {{document_type}} covering the specified areas.
+
+Required Sections:
+<structure>
+{% for field in fields %}
+• {{ field }}
+{% endfor %}
+</structure>
+
+Available Information:
+<background>
+{% for fact in facts %}
+• {{ fact }}
+{% endfor %}
+</background>
+
+Please structure your response as a JSON object where each key corresponds to the specified fields.

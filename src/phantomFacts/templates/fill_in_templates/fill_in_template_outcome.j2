@@ -1,0 +1,17 @@
+We require a {{document_type}} that addresses these components.
+
+Expected Sections:
+<sections>
+{% for field in fields %}
+• {{ field }}
+{% endfor %}
+</sections>
+
+Available Facts:
+<facts>
+{% for fact in facts %}
+• {{ fact }}
+{% endfor %}
+</facts>
+
+Deliver the response in JSON format, with each section represented by its corresponding key.

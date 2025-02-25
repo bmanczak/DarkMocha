@@ -1,0 +1,17 @@
+Please compile a {{document_type}} addressing the listed requirements.
+
+Mandatory Sections:
+<requirements>
+{% for field in fields %}
+• {{ field }}
+{% endfor %}
+</requirements>
+
+Source Facts:
+<source>
+{% for fact in facts %}
+• {{ fact }}
+{% endfor %}
+</source>
+
+Structure the response as a JSON object where each mandatory section is represented by its corresponding key.

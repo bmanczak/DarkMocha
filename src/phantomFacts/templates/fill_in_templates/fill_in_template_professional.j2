@@ -1,0 +1,17 @@
+Would you create a {{document_type}} containing these sections.
+
+Required Content Areas:
+<sections>
+{% for field in fields %}
+• {{ field }}
+{% endfor %}
+</sections>
+
+Reference Material:
+<material>
+{% for fact in facts %}
+• {{ fact }}
+{% endfor %}
+</material>
+
+Please present the final document as a JSON object with keys corresponding to each content area.

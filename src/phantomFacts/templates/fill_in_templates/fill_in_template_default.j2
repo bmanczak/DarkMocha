@@ -1,0 +1,17 @@
+You need to write a {{document_type}}. Here are my notes you can use to write the document:
+
+<notes>
+{% for fact in facts %}
+• {{ fact }}
+{% endfor %}
+</notes>
+
+The document needs to have the following fields:
+
+<fields>
+{% for field in fields %}
+• {{ field }}
+{% endfor %}
+</fields>
+
+Please return your response in a JSON object with keys matching the fields.

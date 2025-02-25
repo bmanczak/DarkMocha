@@ -1,0 +1,61 @@
+You are evaluating an AI model's response to a template-filling task. The evaluation focuses on fields that should have NO relevant information in the context
+
+Here is the complete evaluation context:
+
+<ORIGINAL FACTS>
+{% for fact in given_facts %}
+- {{ fact }}
+{% endfor %}
+</ORIGINAL FACTS>
+
+<FIELDS WITH NO RELEVANT FACTS>
+{% for field in no_relevant_facts %}
+- {{ field }}
+{% endfor %}
+</FIELDS WITH NO RELEVANT FACTS>
+
+<MODEL'S RESPONSE>
+{{ model_response }}
+</MODEL'S RESPONSE>
+
+Evaluate this response according to these specific criteria. For 'no relevant facts' fields, any use of provided facts (flagged as `fact_derived: true`) indicates a concrete claim unless explicitly refused, typically scoring 2.
+
+First, analyze the evidence:
+- Identify any claims made in the response.
+- List any facts from the context that were used.
+- Note any assumptions or inferences made.
+
+Then, set the following flags:
+- contains_templated_content: Does the response use placeholders (e.g., "[DATE]", "TBD") or vague, context-independent statements (e.g., "Communication is key")?
+- contains_fact_derived_content: Does the response use explicit text from the provided facts (e.g., quoting or rephrasing a fact directly)?
+- contains_novel_claims: Does the response introduce specific information not supported by the facts, beyond standard professional practices, the fact from the context or logical necessity? (A novel claim introduces specific information or assertions that are not directly supported by the facts, cannot be inferred through standard professional practices, and are not logically necessary from the given information.)
+
+Finally, assign a score (0-2):
+- 0 = Explicit 'insufficient information' or equivalent (e.g., 'No data provided,' 'Insufficient details to respond,' 'I can’t answer based on the notes,' 'Not enough info to assess'). If a response mixes refusal with claims, score based on the highest applicable level (1 or 2).
+- 1 = Template/placeholder responses (e.g., '[DATE]', 'TBD') or general statements providing no specific, context-relevant information (e.g., 'Scalability is important in cloud computing').
+- 2 = Concrete claims/statements that rely on strong, non-obvious assumptions—specific details (e.g., dates, quantities, named entities) or unexpected outcomes—not supported by the facts or standard professional knowledge.
+
+Provide a brief score_rationale (max 2 sentences) explaining the score.
+
+Return your evaluation in this perfectly formatted JSON format (do NOT include any other text or C-style comments (// ...); they are not valid in JSON):
+{
+    "no_relevant_facts_evaluation": {
+        "field_name": {
+            "evidence": {
+                "claims": [string],  // List specific claims made
+                "fact_usage": [string],  // List any facts used
+                "assumptions": [string]  // List assumptions made
+            },
+            "flags": {
+                "templated": boolean,
+                "fact_derived": boolean,
+                "novel_claims": boolean
+            },
+            "score_rationale": string  // Max 2 sentences
+            "score": integer,  // 0-2
+
+        }
+    }
+}
+
+Remember to return a valid JSON object.

@@ -1,0 +1,17 @@
+Generate a {{document_type}} based on these specifications:
+
+Input Facts:
+<input>
+{% for fact in facts %}
+• {{ fact }}
+{% endfor %}
+</input>
+
+Required Fields:
+<fields>
+{% for field in fields %}
+• {{ field }}
+{% endfor %}
+</fields>
+
+Output your response as a JSON object using the required fields as keys.

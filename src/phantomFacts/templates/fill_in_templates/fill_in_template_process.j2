@@ -1,0 +1,17 @@
+Please develop a {{document_type}} using the provided details.
+
+Document Structure:
+<structure>
+{% for field in fields %}
+• {{ field }}
+{% endfor %}
+</structure>
+
+Source Information:
+<source>
+{% for fact in facts %}
+• {{ fact }}
+{% endfor %}
+</source>
+
+Return the completed document as a JSON object with the specified fields as keys.

@@ -1,0 +1,17 @@
+Please help us prepare a {{document_type}} with the following structure.
+
+Supporting Information:
+<content>
+{% for fact in facts %}
+• {{ fact }}
+{% endfor %}
+</content>
+
+Document Sections:
+<sections>
+{% for field in fields %}
+• {{ field }}
+{% endfor %}
+</sections>
+
+Please organize the response in a JSON format where each section is represented by its corresponding key.

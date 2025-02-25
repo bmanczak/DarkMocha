@@ -1,0 +1,17 @@
+I am requesting a {{document_type}} addressing the following points.
+
+Reference Information:
+<reference>
+{% for fact in facts %}
+• {{ fact }}
+{% endfor %}
+</reference>
+
+Required Sections:
+<sections>
+{% for field in fields %}
+• {{ field }}
+{% endfor %}
+</sections>
+
+Kindly provide the response in JSON format with keys matching the required sections.
