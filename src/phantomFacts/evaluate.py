@@ -12,11 +12,11 @@ from phantomFacts.utils import extract_and_eval_json
 
 def evaluate_dataset(
     responses_dataset: Dataset,
-    evaluators: List[str],
+    evaluators: list[str] = ["phantomFacts_rubric"],
     eval_results_dir: str = "results/eval_results",
     name_suffix: str = "",
     force_reeval: bool = False,
-    adjust_scores: bool = False,
+    adjust_scores: bool = True,
 ) -> pd.DataFrame:
     """
     Evaluate model responses using specified evaluators.
@@ -27,7 +27,8 @@ def evaluate_dataset(
         eval_results_dir: Directory to save evaluation results
         name_suffix: Optional suffix for output files
         force_reeval: Whether to force re-evaluation even if results exist
-        adjust_scores: Whether to adjust scores based on flags
+        adjust_scores: Whether to adjust only deem response hallucination if
+            a novel claim is made.
 
     Returns:
         DataFrame with evaluation results
