@@ -20,6 +20,7 @@ pip install "git+https://github.com/bmanczak/DarkMocha.git@main[gpu]"
 
 ## Running the benchmark
 
+Please remeber to set your API keys for API models. 
 ```
 from datasets import load_dataset
 
