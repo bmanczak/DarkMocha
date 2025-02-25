@@ -47,14 +47,39 @@ if __name__ == "__main__":
             "model": "anthropic/claude-3-5-sonnet-20240620",
             "model_params": {"temperature": 1},
         },
+        {
+            "inference_backend": "litellm",
+            "model": "anthropic/claude-3-7-sonnet-20250219",
+            "model_params": {"temperature": 1, "thinking": {"type": "enabled", "budget_tokens": 1024}},
+        },
         {"inference_backend": "litellm", "model": "openai/gpt-4o-mini", "model_params": {"temperature": 1}},
         {"inference_backend": "litellm", "model": "openai/gpt-4o", "model_params": {"temperature": 1}},
         {"inference_backend": "litellm", "model": "mistral/mistral-large-latest", "model_params": {"temperature": 1}},
-        # {"inference_backend": "vllm", "model": "Qwen/Qwen2.5-32B-Instruct", "model_params": {"sampling_params": {"max_tokens": 2048, "temperature": 1}}},
-        # {"inference_backend": "vllm", "model": "Qwen/Qwen2.5-7B-Instruct", "model_params": {"sampling_params": {"max_tokens": 2048, "temperature": 1}}},
-        # {"inference_backend": "vllm", "model": "meta-llama/Llama-3.2-3B-Instruct", "model_params": {"sampling_params": {"max_tokens": 2048, "temperature": 1}}},
-        # {"inference_backend": "vllm", "model": "meta-llama/Llama-3.1-8B-Instruct", "model_params": {"sampling_params": {"max_tokens": 2048, "temperature": 1}}},
-        # {"inference_backend": "vllm", "model": "deepseek-ai/DeepSeek-R1-Distill-Llama-8B", "model_params": {"sampling_params": {"max_tokens": 2048, "temperature": 1}}},
+        {
+            "inference_backend": "vllm",
+            "model": "Qwen/Qwen2.5-32B-Instruct",
+            "model_params": {"sampling_params": {"max_tokens": 2048, "temperature": 1}},
+        },
+        {
+            "inference_backend": "vllm",
+            "model": "Qwen/Qwen2.5-7B-Instruct",
+            "model_params": {"sampling_params": {"max_tokens": 2048, "temperature": 1}},
+        },
+        {
+            "inference_backend": "vllm",
+            "model": "meta-llama/Llama-3.2-3B-Instruct",
+            "model_params": {"sampling_params": {"max_tokens": 2048, "temperature": 1}},
+        },
+        {
+            "inference_backend": "vllm",
+            "model": "meta-llama/Llama-3.1-8B-Instruct",
+            "model_params": {"sampling_params": {"max_tokens": 2048, "temperature": 1}},
+        },
+        {
+            "inference_backend": "vllm",
+            "model": "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
+            "model_params": {"sampling_params": {"max_tokens": 4096, "temperature": 1}},
+        },
     ]
 
     from tqdm import tqdm
