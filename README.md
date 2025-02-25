@@ -1,4 +1,4 @@
-# PhantomFacts: a test suite for identyfing tendencies of language models to make unsupported claims and their steeribility not to
+# PhantomFacts: A Test Suite for Evaluating Language Model Tendencies Toward Unsupported Claims and Their Steerability
 
 <a href="https://huggingface.co/datasets/brstone/PhantomFacts"><img src="https://img.shields.io/badge/🤗-Data-yellow"></a>
 
