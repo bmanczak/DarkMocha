@@ -2,7 +2,7 @@
 
 <a href="https://huggingface.co/datasets/brstone/PhantomFacts"><img src="https://img.shields.io/badge/🤗-Data-yellow"></a>
 
-This repostiory contains the data as well as automated evaluation tools for evaluating language models on the PhantomFacts. Full paper will be released soon, in the meantime please see the [technical report]()
+This repostiory contains the data as well as automated evaluation tools for evaluating language models on the PhantomFacts. Full paper will be released soon, in the meantime please see the report.pdf in the repository.
 
 ## Installation
 
