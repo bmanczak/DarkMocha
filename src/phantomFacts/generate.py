@@ -28,9 +28,13 @@ def create_model_instance(model_config: Dict[str, str]) -> BaseLLMInterface:
     # Set max_send_messages based on model provider
     if model_config["inference_backend"] == "litellm":
         # Default to 50 for OpenAI models, 20 for others
-        default_max_messages = 50 if "openai" in model_config["model"] else 15
+        # anthropic is slow
+        default_max_messages = (
+            50 if "openai" in model_config["model"] else 15 if "anthropic" in model_config["model"] else 25
+        )
         max_send_messages = model_params.get("max_send_messages", default_max_messages)
-
+        # remove max_send_messages from model_params
+        model_params.pop("max_send_messages", None)
         # Set default temperature if not provided
         if "temperature" not in model_params:
             model_params["temperature"] = 1.0
@@ -49,8 +53,8 @@ def create_model_instance(model_config: Dict[str, str]) -> BaseLLMInterface:
 
 def generate_to_dataset(
     dataset: Dataset,
-    models: List[Dict[str, str]],
-    generation_modes: List[Dict[str, Any]],
+    models: list[dict[str, str]],
+    generation_modes: dict[str, list[dict[str, str]]] | list[list[dict[str, str]]] | None,
     response_output_dir: str = "results/responses",
     name_suffix: str = "",
     force_regen: bool = False,
